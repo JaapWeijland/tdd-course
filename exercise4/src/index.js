@@ -9,6 +9,10 @@ function convert(number) {
         return "V";
     }
 
+    if (number === 6 ) {
+        return "VI";
+    }
+
     for(let i = 0; i < number; i++)  {
         result += "I";
     }
