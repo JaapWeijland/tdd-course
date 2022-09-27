@@ -1,25 +1,25 @@
-function convert(number) {
-    const list = [
-        {number: 9, roman: "IX"},
-        {number: 5, roman: "V"}, 
-        {number: 4, roman: "IV"}
-    ]
+const replacements = [
+    {number: 10, roman: "X"},
+    {number: 9, roman: "IX"},
+    {number: 5, roman: "V"},
+    {number: 4, roman: "IV"},
+    {number: 1, roman: "I"}
+]
 
-    let result = list.reduce((result, current) => {
-        if (number >= current.number)
-        {   
-            number -= current.number;
-            return result + current.roman;
-        }
-        return result;
-    }, "")
+const replaceHighestRomanVariant = (numberLeft) => {
+    if (numberLeft === 0) return "";
 
-    console.log(result);
+    const replacement = replacements.find(({ number }) => {
+        return number <= numberLeft;
+    });
 
-    for(let i = 0; i < number; i++)  {
-        result += "I";
-    }
-    return result;
+    return replacement.roman + replaceHighestRomanVariant(numberLeft - replacement.number);
 }
+
+function convert(number) {
+    return replaceHighestRomanVariant(number);
+}
+
+
 
 module.exports = convert;
