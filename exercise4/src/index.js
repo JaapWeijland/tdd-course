@@ -1,4 +1,5 @@
 const replacements = [
+    {number: 40, roman: "XL"},
     {number: 10, roman: "X"},
     {number: 9, roman: "IX"},
     {number: 5, roman: "V"},

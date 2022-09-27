@@ -11,7 +11,8 @@ describe("Roman literals", () => {
         { input: 8, output: "VIII"},
         { input: 9, output: "IX"},
         { input: 19, output: "XIX" },
-        {input: 21, output: "XXI"}
+        { input: 21, output: "XXI"},
+        { input: 40, output: "XL"}
     ].forEach(({ input, output }) => {
         it(`should translate number ${input} to roman literal ${output}`, () => {
             const result = convert(input);
