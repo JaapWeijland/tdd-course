@@ -1,27 +1,33 @@
-const replacements = [
-    {number: 1000, roman: "M"},
-    {number: 900, roman: "CM"},
-    {number: 500, roman: "D"},
-    {number: 400, roman: "CD"},
-    {number: 100, roman: "C"},
-    {number: 90, roman: "XC"},
-    {number: 50, roman: "L"},
-    {number: 40, roman: "XL"},
-    {number: 10, roman: "X"},
-    {number: 9, roman: "IX"},
-    {number: 5, roman: "V"},
-    {number: 4, roman: "IV"},
-    {number: 1, roman: "I"}
-]
+const _replacements = [
+    {power: 0, small: "I", medium: "V", large: "X"},
+    {power: 1, small: "X", medium: "L", large: "C"},
+    {power: 2, small: "C", medium: "D", large: "M"},
+];
+const TEN = 10
+const INDEXES = [9, 5, 4];
+
+const constructRoman = (numberLeft, sequence, magnitude) => {
+    if (numberLeft >= INDEXES[0] * magnitude) { 
+        return {roman: sequence.small + sequence.large, number: INDEXES[0] * magnitude}
+    } else if (numberLeft >= INDEXES[1] * magnitude) { 
+        return {roman: sequence.medium, number: INDEXES[1] * magnitude}
+    } else if (numberLeft >= INDEXES[2]  * magnitude) { 
+        return {roman: sequence.small + sequence.medium, number: INDEXES[2] * magnitude}
+    } else {
+        return {roman: sequence.small, number: magnitude}
+    }
+}
 
 const replaceHighestRomanVariant = (numberLeft) => {
     if (numberLeft === 0) return "";
 
-    const replacement = replacements.find(({ number }) => {
-        return number <= numberLeft;
+    const powerOfTen = Math.floor(Math.log10(numberLeft)) ;    
+    const replacement = _replacements.find(({ power }) => {
+        return power === powerOfTen;
     });
 
-    return replacement.roman + replaceHighestRomanVariant(numberLeft - replacement.number);
+    const romanPartial = constructRoman(numberLeft, replacement, Math.pow(TEN, powerOfTen));
+    return romanPartial.roman + replaceHighestRomanVariant(numberLeft - romanPartial.number);
 }
 
 function convert(number) {
