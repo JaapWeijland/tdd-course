@@ -1,0 +1,29 @@
+- Buy cd
+    - Decrease stock with 1
+        - Initial stock = 10, decrease = 1, expected stock = 9
+    - If there is not enough stock, throw error
+        - Error = "Not enough in stock"
+    - Add order
+        - cd id = "MICHAEL001", email address = "michael-fan@gmail.com"
+- Search title
+    - If a title matches, show cd
+        - Title = "Beat it", Id = "MICHAEL001"
+    - If no title matches, return error "No cd found"
+        - Title = "Thriller", Cd = null
+- Search artist
+    - If an artist matches, show cd
+        - Artist = "Michael Jackson", Cd = "Beat it - Michael Jackson"
+    - If no aritst matches, return "No cds found"
+        - Artist = "John legend", Cd = null
+- Send batches cds
+    - Batch contains different types of cds
+    - If batch is sent, increase stock with quantity of batch
+        - Quantity 10, increase stock with 10
+- Give rating to cd after purchase
+    - Record all ratings
+    - Rating cannot be higher than 10
+    - Rating cannot be lower than 1
+    - Should average all ratings
+    - Should return a list of all reviews
+    - If rating is left, give option to add description
+    - If purchaser already left a rating, give message "You already rated this product"

@@ -1,0 +1,17 @@
+{
+  "name": "tdd-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "W.C.J. Weijland",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^10.0.0"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0"
+  }
+}
