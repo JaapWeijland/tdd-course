@@ -1,15 +1,20 @@
 function convert(number) {
-    let result = "";
+    const list = [
+        {number: 9, roman: "IX"},
+        {number: 5, roman: "V"}, 
+        {number: 4, roman: "IV"}
+    ]
 
-    if (number >= 5 ){
-        result += "V";
-        number -= 5;
-    }
+    let result = list.reduce((result, current) => {
+        if (number >= current.number)
+        {   
+            number -= current.number;
+            return result + current.roman;
+        }
+        return result;
+    }, "")
 
-    if ( number >= 4 ) {
-        result += "IV";
-        number -= 4;
-    }
+    console.log(result);
 
     for(let i = 0; i < number; i++)  {
         result += "I";
